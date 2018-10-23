@@ -12,7 +12,7 @@ process.env.NODE_ENV = 'testing';
 
 const beforeAction = async () => {
   const testapp = express();
-  const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'api/controllers/');
+  const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'src/api/controllers/');
 
   testapp.use(bodyParser.urlencoded({ extended: false }));
   testapp.use(bodyParser.json());

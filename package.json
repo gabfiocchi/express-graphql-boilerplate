@@ -12,16 +12,16 @@
     "url": "https://github.com/aichbauer/express-rest-api-boilerplate/issues"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./api/api.js",
-    "create-sqlite-db": "shx touch ./db/database.sqlite",
-    "drop-sqlite-db": "shx rm ./db/database.sqlite",
-    "lint": "eslint ./api/. ./config/. ./test/.",
+    "dev": "cross-env NODE_ENV=development node src/api/api.js",
+    "create-sqlite-db": "shx touch db/database.sqlite",
+    "drop-sqlite-db": "shx rm db/database.sqlite",
+    "lint": "eslint src/api/. src/config/. src/test/.",
     "prestart": "npm run create-sqlite-db",
     "start": "npm run nodemon",
     "nodemon": "nodemon --exec npm run dev",
     "prepush": "npm test; npm run drop-sqlite-db; npm run create-sqlite-db",
     "pretest": "npm run lint",
-    "production": "cross-env NODE_ENV=production node ./api/api.js",
+    "production": "cross-env NODE_ENV=production node src/api/api.js",
     "test": "cross-env NODE_ENV=testing jest --coverage",
     "test-ci": "jest --coverage --forceExit"
   },
