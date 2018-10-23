@@ -1,5 +1,6 @@
 /**
  * third party libraries
+ import { routes } from './routes';
  */
 const bodyParser = require('body-parser');
 const cors = require('cors');

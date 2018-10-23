@@ -12,7 +12,7 @@
     "url": "https://github.com/aichbauer/express-rest-api-boilerplate/issues"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node src/api/api.js",
+    "dev": "cross-env NODE_ENV=development babel-node src/api/api.js",
     "create-sqlite-db": "shx touch db/database.sqlite",
     "drop-sqlite-db": "shx rm db/database.sqlite",
     "lint": "eslint src/api/. src/config/. src/test/.",
@@ -49,6 +49,13 @@
     "sqlite3": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
     "cross-env": "^5.1.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
