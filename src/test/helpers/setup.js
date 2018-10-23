@@ -1,24 +1,21 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const mapRoutes = require('express-routes-mapper');
 const { graphqlExpress } = require('apollo-server-express');
-
-const config = require('../../config/');
 const database = require('../../config/database');
 const auth = require('../../api/policies/auth.policy');
 const { schema } = require('../../api/graphql');
+const routes = require('../../api/routes');
 
 process.env.NODE_ENV = 'testing';
 
 const beforeAction = async () => {
   const testapp = express();
-  const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'src/api/controllers/');
 
   testapp.use(bodyParser.urlencoded({ extended: false }));
   testapp.use(bodyParser.json());
 
   // public REST API
-  testapp.use('/rest', mappedOpenRoutes);
+  testapp.use('/api', routes);
 
   // private GraphQL API
   testapp.all('/graphql', (req, res, next) => auth(req, res, next));

@@ -5,5 +5,4 @@ const router = new Router();
 
 router.use('/auth', auth);
 
-
 module.exports = router;

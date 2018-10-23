@@ -16,9 +16,9 @@ afterAll(() => {
   afterAction();
 });
 
-test('AuthController | /rest/register', async () => {
+test('AuthController | /api/auth/register', async () => {
   const res = await request(api)
-    .post('/rest/register')
+    .post('/api/auth/register')
     .set('Accept', /json/)
     .send({
       email: 'martin@mail.com',
@@ -37,14 +37,14 @@ test('AuthController | /rest/register', async () => {
   await user.destroy();
 });
 
-test('AuthController | /rest/login', async () => {
+test('AuthController | /api/auth/login', async () => {
   const user = await User.create({
     email: 'herbert@mail.com',
     password: 'securepassword',
   });
 
   const res = await request(api)
-    .post('/rest/login')
+    .post('/api/auth/login')
     .set('Accept', /json/)
     .send({
       email: 'herbert@mail.com',
@@ -58,14 +58,14 @@ test('AuthController | /rest/login', async () => {
   await user.destroy();
 });
 
-test('AuthController | /rest/validate | isValid === true', async () => {
+test('AuthController | /api/auth/validate | isValid === true', async () => {
   const user = await User.create({
     email: 'herbert@mail.com',
     password: 'securepassword',
   });
 
   const res = await request(api)
-    .post('/rest/login')
+    .post('/api/auth/login')
     .set('Accept', /json/)
     .send({
       email: 'herbert@mail.com',
@@ -74,7 +74,7 @@ test('AuthController | /rest/validate | isValid === true', async () => {
     .expect(200);
 
   const res2 = await request(api)
-    .post('/rest/validate')
+    .post('/api/auth/validate')
     .set('Accept', /json/)
     .send({
       token: res.body.token,
@@ -89,9 +89,9 @@ test('AuthController | /rest/validate | isValid === true', async () => {
   await user.destroy();
 });
 
-test('AuthController | /rest/validate | isValid === false', async () => {
+test('AuthController | /api/auth/validate | isValid === false', async () => {
   const res = await request(api)
-    .post('/rest/validate')
+    .post('/api/auth/validate')
     .set('Accept', /json/)
     .send({
       token: 'Bearer <token>',
