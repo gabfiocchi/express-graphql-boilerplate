@@ -7,8 +7,8 @@ const express = require('express');
 const { graphqlExpress } = require('apollo-server-express');
 const helmet = require('helmet');
 const http = require('http');
-const mapRoutes = require('express-routes-mapper');
 const expressPlayground = require('graphql-playground-middleware-express').default;
+const routes = require('./routes');
 
 /**
  * server configuration
@@ -26,7 +26,6 @@ const environment = process.env.NODE_ENV;
  */
 const api = express();
 const server = http.Server(api);
-const mappedRoutes = mapRoutes(config.publicRoutes, 'src/api/controllers/');
 const DB = dbService(environment, config.migrate).start();
 
 // allow cross origin requests
@@ -45,7 +44,7 @@ api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
 
 // public REST API
-api.use('/rest', mappedRoutes);
+api.use('/api', routes);
 
 // private GraphQL API
 api.all('/graphql', (req, res, next) => auth(req, res, next));
