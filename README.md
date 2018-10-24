@@ -17,7 +17,7 @@ GraphQL is a Query Language where your REST API can co-exist directly beside you
 
 ```sh
 # clone repository
-$ git clone https://github.com/aichbauer/express-graphql-boilerplate.git
+$ git clone https://github.com/gabfiocchi/express-graphql-boilerplate.git
 # cd into project root
 $ cd express-graphql-boilerplate
 # install dependencies
