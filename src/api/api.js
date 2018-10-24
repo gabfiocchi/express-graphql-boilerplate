@@ -1,7 +1,8 @@
 /**
  * third party libraries
- import { routes } from './routes';
  */
+import routes from './routes';
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
@@ -9,7 +10,6 @@ const { graphqlExpress } = require('apollo-server-express');
 const helmet = require('helmet');
 const http = require('http');
 const expressPlayground = require('graphql-playground-middleware-express').default;
-const routes = require('./routes');
 
 /**
  * server configuration

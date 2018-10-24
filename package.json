@@ -23,6 +23,7 @@
     "pretest": "npm run lint",
     "production": "cross-env NODE_ENV=production node src/api/api.js",
     "test": "cross-env NODE_ENV=testing jest --coverage",
+    "test:watch": "yarn run test --watch",
     "test-ci": "jest --coverage --forceExit"
   },
   "jest": {
@@ -44,7 +45,6 @@
     "graphql-playground-middleware-express": "^1.6.2",
     "helmet": "^3.12.0",
     "jsonwebtoken": "^8.2.1",
-    "lodash.merge": "^4.6.1",
     "sequelize": "^4.37.6",
     "sqlite3": "^4.0.0"
   },

@@ -1,10 +1,10 @@
-const authService = require('../../api/services/auth.service');
-const { User } = require('../../api/models');
+import authService from '../../api/services/auth.service';
+import { User } from '../../api/models';
 
 const getAccessToken = async (id) => {
   let token;
   if (id) {
-    token = authService().issue({ id });
+    token = authService.issue({ id });
 
     return token;
   }
@@ -15,11 +15,9 @@ const getAccessToken = async (id) => {
     password: 'supersecurepassword',
   });
 
-  token = authService().issue({ id: user.id });
+  token = authService.issue({ id: user.id });
 
   return token;
 };
 
-module.exports = {
-  getAccessToken,
-};
+export { getAccessToken };

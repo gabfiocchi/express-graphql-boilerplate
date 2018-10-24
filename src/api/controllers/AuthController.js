@@ -1,6 +1,6 @@
-const { User } = require('../models');
-const authService = require('../services/auth.service');
-const bcryptService = require('../services/bcrypt.service');
+import { User } from '../models';
+import authService from '../services/auth.service';
+import bcryptService from '../services/bcrypt.service';
 
 const register = async (req, res) => {
   const {
@@ -15,7 +15,7 @@ const register = async (req, res) => {
         email,
         password,
       });
-      const token = authService().issue({ id: user.id });
+      const token = authService.issue({ id: user.id });
 
       return res.status(200).json({ token, user });
     } catch (err) {
@@ -43,7 +43,7 @@ const login = async (req, res) => {
       }
 
       if (bcryptService().comparePassword(password, user.password)) {
-        const token = authService().issue({ id: user.id });
+        const token = authService.issue({ id: user.id });
 
         return res.status(200).json({ token, user });
       }
@@ -61,7 +61,7 @@ const login = async (req, res) => {
 const validate = (req, res) => {
   const { token } = req.body;
 
-  authService().verify(token, (err) => {
+  authService.verify(token, (err) => {
     if (err) {
       return res.status(401).json({ isvalid: false, err: 'Invalid Token!' });
     }
@@ -70,7 +70,7 @@ const validate = (req, res) => {
   });
 };
 
-module.exports = {
+export {
   register,
   login,
   validate,

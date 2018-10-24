@@ -1,10 +1,11 @@
+import { getAccessToken } from '../../helpers/getAccessToken';
+
 const request = require('supertest');
 
 const {
   beforeAction,
   afterAction,
 } = require('../../helpers/setup');
-const { getAccessToken } = require('../../helpers/getAccessToken');
 
 const { User } = require('../../../api/models');
 const { Note } = require('../../../api/models');

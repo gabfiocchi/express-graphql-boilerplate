@@ -186,7 +186,6 @@ const {
   GraphQLInt,
   GraphQLNonNull,
 } = require('graphql');
-const merge = require('lodash.merge');
 
 // import the Model and the Type
 const { UserType } = require('../types');
@@ -223,10 +222,11 @@ const updateUser = {
       throw new Error(`User with id: ${id} not found!`);
     }
 
-    const updatedUser = merge(foundUser, {
+    const updatedUser = {
+      ...foundUser,
       username,
       email,
-    });
+    };
 
     return foundUser.update(updatedUser);
   },

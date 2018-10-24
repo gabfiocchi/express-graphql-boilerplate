@@ -3,7 +3,6 @@ const {
   GraphQLInt,
   GraphQLNonNull,
 } = require('graphql');
-const merge = require('lodash.merge');
 
 const { NoteType } = require('../types');
 const { Note } = require('../../models');
@@ -21,7 +20,7 @@ const createNote = {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  resolve: (value, { userId, note }) => (
+  resolve: (_value, { userId, note }) => (
     Note.create({
       userId,
       note,
@@ -53,10 +52,12 @@ const updateNote = {
       throw new Error(`Note with id: ${id} not found!`);
     }
 
-    const updatedNote = merge(foundNote, {
+    const updatedNote = {
+      ...foundNote,
       userId,
       note,
-    });
+    };
+
 
     return foundNote.update(updatedNote);
   },
