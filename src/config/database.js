@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
-const path = require('path');
+import connection from './connection';
+import Sequelize from 'sequelize';
+import path from 'path';
 
-const connection = require('./connection');
 
 let database;
 const { Op } = Sequelize;
@@ -93,4 +93,4 @@ switch (process.env.NODE_ENV) {
     );
 }
 
-module.exports = database;
+export default database;

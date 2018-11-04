@@ -1,7 +1,8 @@
+import sequelize from '../../config/database';
+
 const Sequelize = require('sequelize');
 const bcryptSevice = require('../services/bcrypt.service');
 
-const sequelize = require('../../config/database');
 const { Note } = require('./Note');
 
 const hooks = {

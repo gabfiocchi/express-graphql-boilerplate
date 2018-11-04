@@ -1,19 +1,22 @@
-const {
+import {
   GraphQLSchema,
-  GraphQLObjectType,
-} = require('graphql');
-
-const { userQuery } = require('./queries');
-const {
+  GraphQLObjectType
+} from 'graphql';
+import {
+  userQuery
+} from './queries';
+import {
   updateUser,
-  deleteUser,
-} = require('./mutations');
-const { noteQuery } = require('./queries');
-const {
+  deleteUser
+} from './mutations';
+import {
+  noteQuery
+} from './queries';
+import {
   createNote,
   updateNote,
-  deleteNote,
-} = require('./mutations');
+  deleteNote
+} from './mutations';
 
 const RootQuery = new GraphQLObjectType({
   name: 'rootQuery',
@@ -41,4 +44,4 @@ const schema = new GraphQLSchema({
   mutation: RootMutation,
 });
 
-module.exports = { schema };
+export default schema;

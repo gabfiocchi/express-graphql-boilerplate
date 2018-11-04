@@ -2,11 +2,14 @@
  * third party libraries
  */
 import routes from './routes';
+import schema from './graphql';
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
-const { graphqlExpress } = require('apollo-server-express');
+const {
+  graphqlExpress
+} = require('apollo-server-express');
 const helmet = require('helmet');
 const http = require('http');
 const expressPlayground = require('graphql-playground-middleware-express').default;
@@ -17,7 +20,6 @@ const expressPlayground = require('graphql-playground-middleware-express').defau
 const config = require('../config/');
 const auth = require('./policies/auth.policy');
 const dbService = require('./services/db.service');
-const { schema } = require('./graphql');
 
 // environment: development, testing, production
 const environment = process.env.NODE_ENV;
@@ -41,7 +43,9 @@ api.use(helmet({
 }));
 
 // parsing the request bodys
-api.use(bodyParser.urlencoded({ extended: false }));
+api.use(bodyParser.urlencoded({
+  extended: false
+}));
 api.use(bodyParser.json());
 
 // public REST API
@@ -49,9 +53,14 @@ api.use('/api', routes);
 
 // private GraphQL API
 api.all('/graphql', (req, res, next) => auth(req, res, next));
-api.use('/graphql', bodyParser.json(), graphqlExpress({ schema, cacheControl: true }));
+api.use('/graphql', bodyParser.json(), graphqlExpress({
+  schema,
+  cacheControl: true
+}));
 
-api.get('/explore', expressPlayground({ endpoint: '/graphql' }));
+api.get('/explore', expressPlayground({
+  endpoint: '/graphql'
+}));
 
 server.listen(config.port, () => {
   if (environment !== 'production' &&
