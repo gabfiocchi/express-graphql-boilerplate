@@ -1,7 +1,11 @@
-const { Note } = require('./Note');
-const { User } = require('./User');
+import {
+  Note
+} from './Note';
+import {
+  User
+} from './User';
 
-module.exports = {
+export {
   Note,
   User,
 };

@@ -17,9 +17,9 @@ const expressPlayground = require('graphql-playground-middleware-express').defau
 /**
  * server configuration
  */
-const config = require('../config/');
-const auth = require('./policies/auth.policy');
-const dbService = require('./services/db.service');
+import config from '../config/';
+import auth from './policies/auth.policy';
+import dbService from './services/db.service';
 
 // environment: development, testing, production
 const environment = process.env.NODE_ENV;

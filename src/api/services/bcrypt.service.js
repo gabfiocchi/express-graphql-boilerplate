@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt-nodejs');
+import bcrypt from 'bcrypt-nodejs';
 
 const bcryptService = () => {
   const password = (user) => {
@@ -18,4 +18,4 @@ const bcryptService = () => {
   };
 };
 
-module.exports = bcryptService;
+export default bcryptService;

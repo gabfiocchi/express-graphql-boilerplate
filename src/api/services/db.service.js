@@ -109,4 +109,4 @@ const dbService = (environment, migrate) => {
   };
 };
 
-module.exports = dbService;
+export default dbService;
