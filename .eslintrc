@@ -1,16 +1,17 @@
 {
-    "extends": "airbnb-base",
-    "plugins": [
-        "import"
+  "extends": "airbnb-base",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "arrow-parens": [
+      "error",
+      "always"
     ],
-    "rules": {
-        "arrow-parens": [
-            "error",
-            "always"
-        ],
-        "import/prefer-default-export": "off"
-    },
-    "env": {
-        "jest": true
-    }
+    "import/prefer-default-export": "off",
+    "import/no-mutable-exports": "off"
+  },
+  "env": {
+    "jest": true
+  }
 }

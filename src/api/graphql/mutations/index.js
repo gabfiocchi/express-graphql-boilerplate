@@ -1,12 +1,12 @@
 import {
   createNote,
   updateNote,
-  deleteNote
+  deleteNote,
 } from './NoteMutation';
 import {
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
 } from './UserMutation';
 
 export {

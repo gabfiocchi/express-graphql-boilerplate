@@ -25,7 +25,7 @@ const User = sequelize.define('User', {
   },
 }, {
   hooks,
-  tableName
+  tableName,
 });
 
 // eslint-disable-next-line
@@ -39,7 +39,7 @@ User.prototype.toJSON = function () {
 
 User.hasMany(Note, {
   as: 'notes',
-  foreignKey: 'userId'
+  foreignKey: 'userId',
 });
 
 export default User;

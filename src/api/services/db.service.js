@@ -8,15 +8,15 @@ const dbService = (environment, migrate) => {
   const syncDB = () => database.sync();
 
   const successfulDBStart = () => (
-    console.info('connection to the database has been established successfully')
+    console.info('connection to the database has been established successfully') // eslint-disable-line no-console
   );
 
   const errorDBStart = (err) => (
-    console.info('unable to connect to the database:', err)
+    console.info('unable to connect to the database:', err) // eslint-disable-line no-console
   );
 
   const wrongEnvironment = () => {
-    console.warn(`only development, staging, test and production are valid NODE_ENV variables but ${environment} is specified`);
+    console.warn(`only development, staging, test and production are valid NODE_ENV variables but ${environment} is specified`); // eslint-disable-line no-console
     return process.exit(1);
   };
 

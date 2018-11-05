@@ -2,7 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLList
+  GraphQLList,
 } from 'graphql';
 import NoteType from './NoteType';
 

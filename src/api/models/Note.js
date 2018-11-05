@@ -2,7 +2,6 @@ import Sequelize from 'sequelize';
 import sequelize from '../../config/database';
 
 
-
 const tableName = 'notes';
 
 const Note = sequelize.define('Note', {
@@ -10,7 +9,7 @@ const Note = sequelize.define('Note', {
     type: Sequelize.STRING,
   },
 }, {
-  tableName
+  tableName,
 });
 
 export default Note;

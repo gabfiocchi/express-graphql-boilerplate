@@ -1,21 +1,17 @@
 import {
   GraphQLSchema,
-  GraphQLObjectType
+  GraphQLObjectType,
 } from 'graphql';
 import {
-  userQuery
+  userQuery,
+  noteQuery,
 } from './queries';
 import {
   updateUser,
-  deleteUser
-} from './mutations';
-import {
-  noteQuery
-} from './queries';
-import {
+  deleteUser,
   createNote,
   updateNote,
-  deleteNote
+  deleteNote,
 } from './mutations';
 
 const RootQuery = new GraphQLObjectType({

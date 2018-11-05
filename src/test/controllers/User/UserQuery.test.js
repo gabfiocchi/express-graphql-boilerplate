@@ -39,7 +39,9 @@ test('User | query', async () => {
     .set({
       Authorization: `Bearer ${token}`,
     })
-    .send({ query })
+    .send({
+      query,
+    })
     .expect(200)
     .expect('Content-Type', /json/);
 

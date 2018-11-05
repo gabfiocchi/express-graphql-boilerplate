@@ -1,7 +1,7 @@
 import {
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString
+  GraphQLString,
 } from 'graphql';
 
 const NoteType = new GraphQLObjectType({

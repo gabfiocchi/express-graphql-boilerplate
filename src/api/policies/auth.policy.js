@@ -15,12 +15,12 @@ export default (req, res, next) => {
         tokenToVerify = credentials;
       } else {
         return res.status(401).json({
-          msg: 'Format for Authorization: Bearer [token]'
+          msg: 'Format for Authorization: Bearer [token]',
         });
       }
     } else {
       return res.status(401).json({
-        msg: 'Format for Authorization: Bearer [token]'
+        msg: 'Format for Authorization: Bearer [token]',
       });
     }
   } else if (req.body.token) {
@@ -28,14 +28,17 @@ export default (req, res, next) => {
     delete req.query.token;
   } else {
     return res.status(401).json({
-      msg: 'No Authorization was found'
+      msg: 'No Authorization was found',
     });
   }
 
   return authService.verify(tokenToVerify, (err, thisToken) => {
-    if (err) return res.status(401).json({
-      err
-    });
+    if (err) {
+      return res.status(401).json({
+        err,
+      });
+    }
+
     req.token = thisToken;
     return next();
   });

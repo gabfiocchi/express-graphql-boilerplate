@@ -1,14 +1,10 @@
 import {
   GraphQLInt,
   GraphQLString,
-  GraphQLList
+  GraphQLList,
 } from 'graphql';
-import {
-  UserType
-} from '../types';
-import {
-  User
-} from '../../models';
+import { UserType } from '../types';
+import { User } from '../../models';
 
 const userQuery = {
   type: new GraphQLList(UserType),
@@ -39,7 +35,7 @@ const userQuery = {
     },
   },
   resolve: (user, args) => User.findAll({
-    where: args
+    where: args,
   }),
 };
 

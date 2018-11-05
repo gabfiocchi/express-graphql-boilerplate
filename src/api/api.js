@@ -1,18 +1,15 @@
 /**
  * third party libraries
  */
-import routes from './routes';
-import schema from './graphql';
-
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import {
-  graphqlExpress
-} from 'apollo-server-express';
+import { graphqlExpress } from 'apollo-server-express';
 import helmet from 'helmet';
 import http from 'http';
 import expressPlayground from 'graphql-playground-middleware-express';
+import routes from './routes';
+import schema from './graphql';
 
 /**
  * server configuration
@@ -44,7 +41,7 @@ api.use(helmet({
 
 // parsing the request bodys
 api.use(bodyParser.urlencoded({
-  extended: false
+  extended: false,
 }));
 api.use(bodyParser.json());
 
@@ -55,11 +52,11 @@ api.use('/api', routes);
 api.all('/graphql', (req, res, next) => auth(req, res, next));
 api.use('/graphql', bodyParser.json(), graphqlExpress({
   schema,
-  cacheControl: true
+  cacheControl: true,
 }));
 
 api.get('/explore', expressPlayground({
-  endpoint: '/graphql'
+  endpoint: '/graphql',
 }));
 
 server.listen(config.port, () => {
@@ -67,7 +64,7 @@ server.listen(config.port, () => {
     environment !== 'development' &&
     environment !== 'testing'
   ) {
-    console.error(`NODE_ENV is set to ${environment}, but only production and development are valid.`);
+    console.error(`NODE_ENV is set to ${environment}, but only production and development are valid.`); // eslint-disable-line no-console
     process.exit(1);
   }
   return DB;

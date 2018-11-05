@@ -1,14 +1,10 @@
 import {
   GraphQLString,
   GraphQLInt,
-  GraphQLNonNull
+  GraphQLNonNull,
 } from 'graphql';
-import {
-  UserType
-} from '../types';
-import {
-  User
-} from '../../models';
+import { UserType } from '../types';
+import { User } from '../../models';
 
 const updateUser = {
   type: UserType,
@@ -30,7 +26,7 @@ const updateUser = {
   resolve: async (user, {
     id,
     username,
-    email
+    email,
   }) => {
     const foundUser = await User.findById(id);
 
@@ -58,7 +54,7 @@ const deleteUser = {
     },
   },
   resolve: async (user, {
-    id
+    id,
   }) => {
     const foundUser = await User.findById(id);
 

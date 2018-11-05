@@ -1,9 +1,13 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const { graphqlExpress } = require('apollo-server-express');
+const {
+  graphqlExpress,
+} = require('apollo-server-express');
 const database = require('../../config/database');
 const auth = require('../../api/policies/auth.policy');
-const { schema } = require('../../api/graphql');
+const {
+  schema,
+} = require('../../api/graphql');
 const routes = require('../../api/routes');
 
 process.env.NODE_ENV = 'testing';
@@ -11,7 +15,9 @@ process.env.NODE_ENV = 'testing';
 const beforeAction = async () => {
   const testapp = express();
 
-  testapp.use(bodyParser.urlencoded({ extended: false }));
+  testapp.use(bodyParser.urlencoded({
+    extended: false,
+  }));
   testapp.use(bodyParser.json());
 
   // public REST API
@@ -34,7 +40,7 @@ const beforeAction = async () => {
   await database.drop();
   await database.sync();
 
-  console.log('Connection to the database has been established successfully');
+  console.log('Connection to the database has been established successfully'); // eslint-disable-line no-console
 
   return testapp;
 };

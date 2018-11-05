@@ -1,14 +1,10 @@
 import {
   GraphQLInt,
   GraphQLString,
-  GraphQLList
+  GraphQLList,
 } from 'graphql';
-import {
-  NoteType
-} from '../types';
-import {
-  Note
-} from '../../models';
+import { NoteType } from '../types';
+import { Note } from '../../models';
 
 const noteQuery = {
   type: new GraphQLList(NoteType),
@@ -35,7 +31,7 @@ const noteQuery = {
     },
   },
   resolve: (user, args) => Note.findAll({
-    where: args
+    where: args,
   }),
 };
 

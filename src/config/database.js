@@ -1,6 +1,6 @@
-import connection from './connection';
 import Sequelize from 'sequelize';
 import path from 'path';
+import connection from './connection';
 
 
 let database;

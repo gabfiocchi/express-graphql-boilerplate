@@ -4,7 +4,9 @@ import { User } from '../../api/models';
 const getAccessToken = async (id) => {
   let token;
   if (id) {
-    token = authService.issue({ id });
+    token = authService.issue({
+      id,
+    });
 
     return token;
   }
@@ -15,7 +17,9 @@ const getAccessToken = async (id) => {
     password: 'supersecurepassword',
   });
 
-  token = authService.issue({ id: user.id });
+  token = authService.issue({
+    id: user.id,
+  });
 
   return token;
 };

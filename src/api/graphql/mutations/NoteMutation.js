@@ -1,14 +1,10 @@
 import {
   GraphQLString,
   GraphQLInt,
-  GraphQLNonNull
+  GraphQLNonNull,
 } from 'graphql';
-import {
-  NoteType
-} from '../types';
-import {
-  Note
-} from '../../models';
+import { NoteType } from '../types';
+import { Note } from '../../models';
 
 const createNote = {
   type: NoteType,
@@ -25,7 +21,7 @@ const createNote = {
   },
   resolve: (_value, {
     userId,
-    note
+    note,
   }) => (
     Note.create({
       userId,
@@ -53,7 +49,7 @@ const updateNote = {
   resolve: async (value, {
     id,
     userId,
-    note
+    note,
   }) => {
     const foundNote = await Note.findById(id);
 
@@ -82,7 +78,7 @@ const deleteNote = {
     },
   },
   resolve: async (value, {
-    id
+    id,
   }) => {
     const foundNote = await Note.findById(id);
 
