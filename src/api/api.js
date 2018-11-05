@@ -4,15 +4,15 @@
 import routes from './routes';
 import schema from './graphql';
 
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const express = require('express');
-const {
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import {
   graphqlExpress
-} = require('apollo-server-express');
-const helmet = require('helmet');
-const http = require('http');
-const expressPlayground = require('graphql-playground-middleware-express').default;
+} from 'apollo-server-express';
+import helmet from 'helmet';
+import http from 'http';
+import expressPlayground from 'graphql-playground-middleware-express';
 
 /**
  * server configuration
