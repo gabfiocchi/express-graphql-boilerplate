@@ -1,11 +1,14 @@
-const {
+import {
   GraphQLString,
   GraphQLInt,
-  GraphQLNonNull,
-} = require('graphql');
-
-const { UserType } = require('../types');
-const { User } = require('../../models');
+  GraphQLNonNull
+} from 'graphql';
+import {
+  UserType
+} from '../types';
+import {
+  User
+} from '../../models';
 
 const updateUser = {
   type: UserType,
@@ -24,7 +27,11 @@ const updateUser = {
       type: GraphQLString,
     },
   },
-  resolve: async (user, { id, username, email }) => {
+  resolve: async (user, {
+    id,
+    username,
+    email
+  }) => {
     const foundUser = await User.findById(id);
 
     if (!foundUser) {
@@ -50,7 +57,9 @@ const deleteUser = {
       type: new GraphQLNonNull(GraphQLInt),
     },
   },
-  resolve: async (user, { id }) => {
+  resolve: async (user, {
+    id
+  }) => {
     const foundUser = await User.findById(id);
 
     if (!foundUser) {
@@ -67,7 +76,7 @@ const deleteUser = {
   },
 };
 
-module.exports = {
+export {
   updateUser,
   deleteUser,
 };

@@ -1,11 +1,14 @@
-const {
+import {
   GraphQLInt,
   GraphQLString,
-  GraphQLList,
-} = require('graphql');
-
-const { NoteType } = require('../types');
-const { Note } = require('../../models');
+  GraphQLList
+} from 'graphql';
+import {
+  NoteType
+} from '../types';
+import {
+  Note
+} from '../../models';
 
 const noteQuery = {
   type: new GraphQLList(NoteType),
@@ -31,7 +34,9 @@ const noteQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => Note.findAll({ where: args }),
+  resolve: (user, args) => Note.findAll({
+    where: args
+  }),
 };
 
-module.exports = { noteQuery };
+export default noteQuery;

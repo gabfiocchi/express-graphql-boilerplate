@@ -1,11 +1,14 @@
-const {
+import {
   GraphQLString,
   GraphQLInt,
-  GraphQLNonNull,
-} = require('graphql');
-
-const { NoteType } = require('../types');
-const { Note } = require('../../models');
+  GraphQLNonNull
+} from 'graphql';
+import {
+  NoteType
+} from '../types';
+import {
+  Note
+} from '../../models';
 
 const createNote = {
   type: NoteType,
@@ -20,14 +23,16 @@ const createNote = {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  resolve: (_value, { userId, note }) => (
+  resolve: (_value, {
+    userId,
+    note
+  }) => (
     Note.create({
       userId,
       note,
     })
   ),
 };
-
 const updateNote = {
   type: NoteType,
   description: 'The mutation that allows you to update an existing Note by Id',
@@ -45,7 +50,11 @@ const updateNote = {
       type: GraphQLString,
     },
   },
-  resolve: async (value, { id, userId, note }) => {
+  resolve: async (value, {
+    id,
+    userId,
+    note
+  }) => {
     const foundNote = await Note.findById(id);
 
     if (!foundNote) {
@@ -72,7 +81,9 @@ const deleteNote = {
       type: new GraphQLNonNull(GraphQLInt),
     },
   },
-  resolve: async (value, { id }) => {
+  resolve: async (value, {
+    id
+  }) => {
     const foundNote = await Note.findById(id);
 
     if (!foundNote) {
@@ -89,7 +100,7 @@ const deleteNote = {
   },
 };
 
-module.exports = {
+export {
   createNote,
   updateNote,
   deleteNote,

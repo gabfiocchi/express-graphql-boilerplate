@@ -1,7 +1,7 @@
-const { NoteType } = require('./NoteType');
-const { UserType } = require('./UserType');
+import NoteType from './NoteType';
+import UserType from './UserType';
 
-module.exports = {
+export {
   NoteType,
   UserType,
 };

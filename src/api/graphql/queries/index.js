@@ -1,7 +1,7 @@
-const { noteQuery } = require('./NoteQuery');
-const { userQuery } = require('./UserQuery');
+import noteQuery from './NoteQuery';
+import userQuery from './UserQuery';
 
-module.exports = {
+export {
   noteQuery,
   userQuery,
 };

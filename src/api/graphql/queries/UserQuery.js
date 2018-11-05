@@ -1,11 +1,14 @@
-const {
+import {
   GraphQLInt,
   GraphQLString,
-  GraphQLList,
-} = require('graphql');
-
-const { UserType } = require('../types');
-const { User } = require('../../models');
+  GraphQLList
+} from 'graphql';
+import {
+  UserType
+} from '../types';
+import {
+  User
+} from '../../models';
 
 const userQuery = {
   type: new GraphQLList(UserType),
@@ -35,7 +38,9 @@ const userQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => User.findAll({ where: args }),
+  resolve: (user, args) => User.findAll({
+    where: args
+  }),
 };
 
-module.exports = { userQuery };
+export default userQuery;

@@ -1,15 +1,15 @@
-const {
+import {
   createNote,
   updateNote,
-  deleteNote,
-} = require('./NoteMutation');
-const {
+  deleteNote
+} from './NoteMutation';
+import {
   createUser,
   updateUser,
-  deleteUser,
-} = require('./UserMutation');
+  deleteUser
+} from './UserMutation';
 
-module.exports = {
+export {
   createNote,
   updateNote,
   deleteNote,
