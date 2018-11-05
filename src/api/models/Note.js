@@ -9,6 +9,8 @@ const Note = sequelize.define('Note', {
   note: {
     type: Sequelize.STRING,
   },
-}, { tableName });
+}, {
+  tableName
+});
 
-module.exports = { Note };
+export default Note;

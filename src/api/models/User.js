@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 import sequelize from '../../config/database';
 import bcryptSevice from '../services/bcrypt.service';
 
-const { Note } = require('./Note');
+import Note from './Note';
 
 const hooks = {
   beforeCreate(user) {
@@ -23,7 +23,10 @@ const User = sequelize.define('User', {
   email: {
     type: Sequelize.STRING,
   },
-}, { hooks, tableName });
+}, {
+  hooks,
+  tableName
+});
 
 // eslint-disable-next-line
 User.prototype.toJSON = function () {
@@ -34,6 +37,9 @@ User.prototype.toJSON = function () {
   return values;
 };
 
-User.hasMany(Note, { as: 'notes', foreignKey: 'userId' });
+User.hasMany(Note, {
+  as: 'notes',
+  foreignKey: 'userId'
+});
 
-module.exports = { User };
+export default User;
